@@ -13,8 +13,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composestatedemo.ui.theme.ComposeStateDemoTheme
@@ -31,9 +29,9 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally
 
                 ) {
-                    var count by rememberSaveable{mutableStateOf(0)}
+                    var count = viewModel.count
                     MyButton(count) {
-                     count =   it + 1
+                       viewModel.increaseCount()
                     }
 
                 }
