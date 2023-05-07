@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//val count = mutableStateOf(0)
 
 @Composable
 fun MyButton(currentCount:Int,updateCount:(Int)->Unit){
