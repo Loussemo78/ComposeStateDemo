@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
+// they are 2 paremeters current value to display and event that request current value to change
 @Composable
 fun MyButton(currentCount:Int,updateCount:(Int)->Unit){
     Button(onClick = {
