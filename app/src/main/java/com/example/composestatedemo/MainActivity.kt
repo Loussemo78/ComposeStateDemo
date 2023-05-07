@@ -8,9 +8,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,10 +43,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyButton(){
     val context = LocalContext.current
-    val count = remember{mutableStateOf(0)}
+    var count by remember{mutableStateOf(0)}
     Button(onClick = {
-        count.value = count.value+1
-        Toast.makeText(context,"Count is : ${count.value}", Toast.LENGTH_SHORT).show()
+        count += 1
+        Toast.makeText(context,"Count is : ${count}", Toast.LENGTH_SHORT).show()
     },
         contentPadding = PaddingValues(16.dp),
         border = BorderStroke(10.dp, Color.Black),
@@ -58,7 +56,7 @@ fun MyButton(){
 
         )
     ) {
-        Text("Count is : ${count.value}",
+        Text("Count is : $count",
             style = MaterialTheme.typography.h3,
             modifier = Modifier.padding(5.dp))
     }
